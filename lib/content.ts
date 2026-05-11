@@ -62,9 +62,15 @@ function readCollection<T>(folder: string): T[] {
 }
 
 export function getEvents(): Event[] {
-  return readCollection<Event>("events").sort((a, b) =>
-    a.date.localeCompare(b.date)
-  );
+  return readCollection<Event>("events")
+    .map((e) => ({
+      ...e,
+      date:
+        typeof e.date === "string"
+          ? e.date
+          : new Date(e.date).toISOString().slice(0, 10),
+    }))
+    .sort((a, b) => a.date.localeCompare(b.date));
 }
 
 export function getUpcomingEvents(): Event[] {
