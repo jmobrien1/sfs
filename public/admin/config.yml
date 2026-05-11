@@ -1,0 +1,137 @@
+backend:
+  name: github
+  repo: jmobrien1/sfs
+  branch: main
+
+# Local backend mode — Decap reads/writes files directly via `npx decap-server`
+# running on localhost. Use this until we're ready to wire real OAuth.
+#
+# To edit content locally:
+#   1. In one terminal: `npx decap-server`
+#   2. In another:      `npm run dev`
+#   3. Visit:           http://localhost:3000/admin
+#
+# When we're ready for production editing, comment this line out and
+# set up the Netlify Identity OAuth proxy. See docs/DECAP_AUTH.md (TBD).
+local_backend: true
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://sherwoodforestshores.meetmikeobrien.com
+display_url: https://sherwoodforestshores.meetmikeobrien.com
+logo_url: /sign.png
+
+collections:
+  - name: "events"
+    label: "Events & Meetings"
+    label_singular: "Event"
+    folder: "content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date}} — {{title}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Time", name: "time", widget: "string", hint: "e.g. 9:00 AM" }
+      - { label: "Location", name: "location", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["board-meeting", "community", "pool"]
+        default: "board-meeting"
+      - { label: "Includes Zoom?", name: "zoom", widget: "boolean", default: false }
+      - { label: "Zoom URL", name: "zoom_url", widget: "string", required: false }
+      - { label: "Notes (optional)", name: "body", widget: "markdown", required: false }
+
+  - name: "board"
+    label: "Board Members"
+    label_singular: "Member"
+    folder: "content/board"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{name}} — {{role}}"
+    sortable_fields: ["order"]
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Phone", name: "phone", widget: "string", required: false }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - { label: "Display Order", name: "order", widget: "number", default: 99 }
+
+  - name: "amenities"
+    label: "Amenities"
+    label_singular: "Amenity"
+    folder: "content/amenities"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Short Description", name: "short", widget: "string" }
+      - { label: "Detail Line", name: "detail", widget: "string" }
+      - label: "Icon"
+        name: "icon"
+        widget: "select"
+        options: ["pool", "pavilion", "pier", "tennis", "basketball", "playground", "pond"]
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - { label: "Hours", name: "hours", widget: "text", required: false }
+      - { label: "Rules / Forms URL", name: "rules_url", widget: "string", required: false }
+      - { label: "Display Order", name: "order", widget: "number", default: 99 }
+      - { label: "Full Description", name: "body", widget: "markdown" }
+
+  - name: "documents"
+    label: "Documents & Forms"
+    label_singular: "Document"
+    folder: "content/documents"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["governing", "forms", "financial", "minutes"]
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Google Drive URL", name: "drive_url", widget: "string" }
+      - { label: "Last Updated", name: "updated", widget: "datetime", format: "YYYY-MM-DD", time_format: false }
+
+  - name: "announcements"
+    label: "Announcements"
+    label_singular: "Announcement"
+    folder: "content/announcements"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    sortable_fields: ["date"]
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Featured on homepage?", name: "featured", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Page Copy"
+    files:
+      - label: "Homepage"
+        name: "home"
+        file: "content/pages/home.md"
+        fields:
+          - { label: "Hero Tagline", name: "tagline", widget: "string" }
+          - { label: "Welcome Paragraph", name: "welcome", widget: "text" }
+      - label: "Community / About"
+        name: "community"
+        file: "content/pages/community.md"
+        fields:
+          - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Resources"
+        name: "resources"
+        file: "content/pages/resources.md"
+        fields:
+          - { label: "FAQ", name: "faq", widget: "list", fields: [{ label: "Q", name: "q", widget: "string" }, { label: "A", name: "a", widget: "text" }] }
+      - label: "Contact"
+        name: "contact"
+        file: "content/pages/contact.md"
+        fields:
+          - { label: "Intro", name: "body", widget: "markdown" }

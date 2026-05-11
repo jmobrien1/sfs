@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sherwood Forest Shores — Where Paradise Awaits You</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --teal: #4A9B8E;
+    --teal-deep: #2F7268;
+    --navy: #1A3A5C;
+    --navy-deep: #0F2640;
+    --sand: #E8DCC4;
+    --sand-light: #F4ECD8;
+    --cream: #FBF8F1;
+    --paper: #FFFFFF;
+    --ink: #1F2A35;
+    --ink-soft: #4A5763;
+    --muted: #8A9099;
+    --hairline: #E5DFD2;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --shadow-soft: 0 1px 3px rgba(15, 38, 64, 0.06), 0 8px 24px rgba(15, 38, 64, 0.06);
+    --shadow-card: 0 1px 2px rgba(15, 38, 64, 0.04), 0 12px 32px rgba(15, 38, 64, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ─────────── Navigation ─────────── */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(251, 248, 241, 0.85);
+    border-bottom: 1px solid rgba(229, 223, 210, 0.6);
+    transition: all 0.3s ease;
+  }
+
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0.875rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--navy);
+  }
+
+  .nav-brand img {
+    height: 44px;
+    width: auto;
+  }
+
+  .nav-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .nav-brand-text .name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    color: var(--navy);
+  }
+
+  .nav-brand-text .tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--teal-deep);
+    margin-top: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+
+  .nav-links a:hover { color: var(--navy); }
+
+  .nav-cta {
+    background: var(--navy);
+    color: var(--cream) !important;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.03em !important;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .nav-cta:hover { background: var(--navy-deep); transform: translateY(-1px); }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--navy);
+    padding: 0.5rem;
+  }
+
+  /* ─────────── Hero ─────────── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    background-image: url('hero.jpg');
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.05);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(15, 38, 64, 0.55) 0%, rgba(26, 58, 92, 0.35) 50%, rgba(74, 155, 142, 0.45) 100%);
+  }
+
+  .hero-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(15, 38, 64, 0.25) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 8rem 2rem 6rem;
+    color: var(--cream);
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: rgba(251, 248, 241, 0.85);
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: rgba(251, 248, 241, 0.5);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.75rem, 7vw, 5.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    max-width: 18ch;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: #C9E4DD;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    max-width: 36rem;
+    line-height: 1.6;
+    color: rgba(251, 248, 241, 0.92);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.75rem;
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .btn-primary {
+    background: var(--cream);
+    color: var(--navy);
+  }
+
+  .btn-primary:hover {
+    background: var(--paper);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border-color: rgba(251, 248, 241, 0.5);
+  }
+
+  .btn-ghost:hover {
+    background: rgba(251, 248, 241, 0.1);
+    border-color: var(--cream);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(251, 248, 241, 0.7);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(251,248,241,0.5), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.9; }
+  }
+
+  /* ─────────── Wave divider ─────────── */
+  .wave-divider {
+    display: block;
+    width: 100%;
+    height: 60px;
+    color: var(--cream);
+  }
+
+  /* ─────────── Sections ─────────── */
+  section { position: relative; }
+
+  .section-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .section-eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--teal-deep);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.1;
+    color: var(--navy);
+    letter-spacing: -0.015em;
+    margin-bottom: 1.5rem;
+    max-width: 24ch;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--teal-deep);
+  }
+
+  .section-lede {
+    font-size: 1.125rem;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    line-height: 1.65;
+  }
+
+  /* ─────────── Welcome section ─────────── */
+  .welcome {
+    background: var(--cream);
+  }
+
+  .welcome-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .welcome-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+    margin-top: 2.5rem;
+  }
+
+  .stat {
+    background: var(--cream);
+    padding: 1.75rem 1.5rem;
+  }
+
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--teal-deep);
+    margin-top: 0.5rem;
+    font-weight: 500;
+  }
+
+  .welcome-image {
+    position: relative;
+    aspect-ratio: 4/5;
+    background: var(--sand);
+    border-radius: 2px;
+    overflow: hidden;
+    background-image: url('sign.png');
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--shadow-card);
+  }
+
+  .welcome-image::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border: 1px solid var(--teal);
+    border-radius: 2px;
+    z-index: -1;
+    transform: translate(20px, 20px);
+  }
+
+  /* ─────────── Amenities ─────────── */
+  .amenities {
+    background: var(--paper);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .amenities-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .amenities-header .section-title,
+  .amenities-header .section-lede {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+  }
+
+  .amenity {
+    background: var(--paper);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: background 0.3s ease;
+    position: relative;
+  }
+
+  .amenity:hover {
+    background: var(--sand-light);
+  }
+
+  .amenity-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1.25rem;
+    color: var(--teal-deep);
+  }
+
+  .amenity-name {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.005em;
+  }
+
+  .amenity-detail {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* ─────────── Events / Calendar ─────────── */
+  .calendar {
+    background: var(--navy);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .calendar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 20% 30%, rgba(74, 155, 142, 0.15) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 70%, rgba(232, 220, 196, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .calendar .section-inner { position: relative; z-index: 1; }
+
+  .calendar .section-eyebrow { color: #87C5BA; }
+  .calendar .section-title { color: var(--cream); }
+  .calendar .section-lede { color: rgba(251, 248, 241, 0.75); }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .calendar-header-text { max-width: 50ch; }
+
+  .zoom-card {
+    background: rgba(251, 248, 241, 0.06);
+    border: 1px solid rgba(251, 248, 241, 0.15);
+    padding: 1.5rem 1.75rem;
+    border-radius: 4px;
+    min-width: 280px;
+  }
+
+  .zoom-card-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #87C5BA;
+    margin-bottom: 0.4rem;
+  }
+
+  .zoom-card-link {
+    color: var(--cream);
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s ease;
+  }
+
+  .zoom-card-link:hover { color: #87C5BA; }
+
+  .events-list {
+    border-top: 1px solid rgba(251, 248, 241, 0.15);
+  }
+
+  .event {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid rgba(251, 248, 241, 0.12);
+    transition: background 0.2s ease;
+  }
+
+  .event:hover {
+    background: rgba(251, 248, 241, 0.03);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .event-date {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-date .month {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #87C5BA;
+    font-weight: 600;
+  }
+
+  .event-date .day {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-top: 0.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .event-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .event-title {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: -0.005em;
+  }
+
+  .event-meta {
+    font-size: 0.875rem;
+    color: rgba(251, 248, 241, 0.6);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .event-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .event-action {
+    color: #87C5BA;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .event-action:hover { border-color: #87C5BA; }
+
+  /* ─────────── Quick Access ─────────── */
+  .quick {
+    background: var(--cream);
+  }
+
+  .quick-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .quick-card {
+    background: var(--paper);
+    padding: 2.25rem;
+    border-radius: 2px;
+    border: 1px solid var(--hairline);
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quick-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--teal);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .quick-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+    border-color: transparent;
+  }
+
+  .quick-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .quick-card-icon {
+    width: 40px;
+    height: 40px;
+    color: var(--teal-deep);
+  }
+
+  .quick-card-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+
+  .quick-card-desc {
+    font-size: 0.925rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    flex: 1;
+  }
+
+  .quick-card-link {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--teal-deep);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+  }
+
+  /* ─────────── Emergency Strip ─────────── */
+  .emergency {
+    background: var(--sand-light);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .emergency-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .emergency-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--navy);
+  }
+
+  .emergency-label-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--teal-deep);
+  }
+
+  .emergency-label-text {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .emergency-contacts {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .ec {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+  }
+
+  .ec-name {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  .ec-number {
+    font-family: var(--serif);
+    color: var(--navy);
+    font-size: 1.05rem;
+    font-weight: 500;
+    text-decoration: none;
+    margin-top: 2px;
+  }
+
+  .ec-number:hover { color: var(--teal-deep); }
+
+  /* ─────────── Footer ─────────── */
+  footer {
+    background: var(--navy-deep);
+    color: rgba(251, 248, 241, 0.7);
+  }
+
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 5rem 2rem 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-brand-name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--cream);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .footer-brand-tag {
+    font-style: italic;
+    color: #87C5BA;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+  }
+
+  .footer-address {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+
+  .footer-col-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #87C5BA;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col li { margin-bottom: 0.6rem; }
+
+  .footer-col a {
+    color: rgba(251, 248, 241, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover { color: var(--cream); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(251, 248, 241, 0.1);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: rgba(251, 248, 241, 0.5);
+  }
+
+  /* ─────────── Responsive ─────────── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-links.mobile-open {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: var(--cream);
+      padding: 1.5rem 2rem;
+      gap: 1.25rem;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .mobile-menu-btn { display: block; }
+    .welcome-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .welcome-image { aspect-ratio: 16/10; max-width: 400px; margin: 0 auto; }
+    .section-inner { padding: 4rem 1.25rem; }
+    .hero-content { padding: 7rem 1.25rem 5rem; }
+    .calendar-header { flex-direction: column; align-items: stretch; }
+    .event { grid-template-columns: 90px 1fr; gap: 1.5rem; }
+    .event-action { grid-column: 1 / -1; justify-self: start; margin-top: 0.5rem; }
+    .event-date .day { font-size: 1.75rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .emergency-inner { flex-direction: column; align-items: flex-start; }
+    .emergency-contacts { gap: 1.5rem; }
+  }
+
+  @media (max-width: 560px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .btn { justify-content: center; }
+  }
+
+  /* ─────────── Reveal animations ─────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.9s ease 0.2s backwards; }
+  .hero-title { animation: fadeUp 1s ease 0.4s backwards; }
+  .hero-subtitle { animation: fadeUp 1s ease 0.6s backwards; }
+  .hero-actions { animation: fadeUp 1s ease 0.8s backwards; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="sign.png" alt="Sherwood Forest Shores" />
+      <div class="nav-brand-text">
+        <span class="name">Sherwood Forest Shores</span>
+        <span class="tag">Reedville · Virginia</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#community">Community</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#calendar">Calendar</a>
+      <a href="#documents">Documents</a>
+      <a href="#contact">Contact</a>
+      <a href="#calendar" class="nav-cta">Next Meeting</a>
+    </div>
+    <button class="mobile-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('mobile-open')" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+  <div class="hero-image"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Est. on the Little Wicomico</div>
+    <h1 class="hero-title">Where <em>paradise</em><br/>awaits you.</h1>
+    <p class="hero-subtitle">A community of 493 lots on the Little Wicomico River and Cod Creek, with easy boat access to the Chesapeake Bay and Potomac River — the way the Northern Neck was meant to be enjoyed.</p>
+    <div class="hero-actions">
+      <a href="#community" class="btn btn-primary">Explore the Community →</a>
+      <a href="#calendar" class="btn btn-ghost">2026 Calendar</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- Wave divider -->
+<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:-1px;background:transparent;">
+  <path fill="currentColor" d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z"/>
+</svg>
+
+<!-- ════════ WELCOME ════════ -->
+<section class="welcome" id="community">
+  <div class="section-inner">
+    <div class="welcome-grid">
+      <div class="reveal">
+        <span class="section-eyebrow">A Northern Neck Community</span>
+        <h2 class="section-title">A quiet community<br/>between <em>two rivers</em>.</h2>
+        <p class="section-lede">We are a community of privately-owned properties dedicated to the enjoyment and relaxation afforded by our abundant surroundings. About 327 property owners enjoy inland and waterfront lots — boating from the dock to the Bay by morning, watching the sun set across the marsh by evening.</p>
+        <div class="welcome-stats">
+          <div class="stat">
+            <div class="stat-number">493</div>
+            <div class="stat-label">Lots</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">32</div>
+            <div class="stat-label">Slip Boat Pier</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">327</div>
+            <div class="stat-label">Property Owners</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">1968</div>
+            <div class="stat-label">Established</div>
+          </div>
+        </div>
+      </div>
+      <div class="welcome-image reveal" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ AMENITIES ════════ -->
+<section class="amenities" id="amenities">
+  <div class="section-inner">
+    <div class="amenities-header reveal">
+      <span class="section-eyebrow">Property Owner Amenities</span>
+      <h2 class="section-title">Everything you need,<br/>right at <em>home</em>.</h2>
+      <p class="section-lede">Seven amenities maintained by the HOA for the enjoyment of property owners and their guests.</p>
+    </div>
+    <div class="amenities-grid">
+      <div class="amenity">
+        <svg class="amenity-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 40c4-2 8-2 12 0s8 2 12 0 8-2 12 0 8 2 12 0"/>
+          <path d="M8 48c4-2 8-2 12 0s8 2 12 0 8-2 12 0 8 2 12 0"/>
+          <path d="M8 56c4-2 8-2 12 0s8 2 12 0 8-2 12 0 8 2 12 0"/>
+          <path d="M16 40V20a4 4 0 014-4h24a4 4 0 014 4v20"/>
+        </svg>
+        <div class="amenity-name">Swimming Pool</div>
+        <div class="amenity-detail">30' × 70'<br/>Plus wading pool</div>
+      </div>
+      <div class="amenity">
+        <svg class="amenity-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M32 8L4 32h6v24h44V32h6L32 8z"/>
+          <path d="M32 16L12 32"/>
+          <path d="M32 16L52 32"/>
+        </svg>
+        <div class="amenity-name">Community Pavilion</div>
+        <div class="amenity-detail">Gatherings & events<br/>by the pool</div>
+      </div>
+      <div class="amenity">
+        <svg class="amenity-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M48 56V32a16 16 0 00-32 0v24"/>
+          <path d="M8 56h48"/>
+          <path d="M16 56V44h32v12"/>
+          <line x1="32" y1="8" x2="32" y2="16"/>
+        </svg>
+        <div class="amenity-name">Boat Pier</div>
+        <div class="amenity-detail">32 slips<br/>Access to the Bay</div>
+      </div>
+      <div class="amenity">
+        <svg class="amenity-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="32" cy="32" r="22"/>
+          <path d="M10 32h44"/>
+          <path d="M32 10v44"/>
+          <path d="M14 18l36 28M14 46l36-28"/>
+        </svg>
+        <div class="amenity-name">Tennis Courts</div>
+        <div class="amenity-detail">Open year-round<br/>For members</div>
+      </div>
+      <div class="amenity">
+        <svg class="amenity-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="32" cy="32" r="22"/>
+          <path d="M10 32c8 0 14 6 14 14M54 32c-8 0-14 6-14 14M10 32c8 0 14-6 14-14M54 32c-8 0-14-6-14-14"/>
+          <path d="M32 10v44"/>
+        </svg>
+        <div class="amenity-name">Basketball Court</div>
+        <div class="amenity-detail">Full-size court<br/>Beside the pool</div>
+      </div>
+      <div class="amenity">
+        <svg class="amenity-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 48V28l8-8 8 8M28 48V20l12-10 16 14v24"/>
+          <path d="M8 48h48"/>
+          <rect x="22" y="36" width="8" height="12"/>
+          <rect x="38" y="32" width="8" height="8"/>
+        </svg>
+        <div class="amenity-name">Playground</div>
+        <div class="amenity-detail">For families<br/>And grandchildren</div>
+      </div>
+      <div class="amenity">
+        <svg class="amenity-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+          <ellipse cx="32" cy="44" rx="22" ry="8"/>
+          <path d="M14 28c0-4 4-8 8-8s4 4 4 4 0-8 6-8 6 8 6 8 0-4 4-4 8 4 8 8"/>
+          <path d="M22 44c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>
+        </svg>
+        <div class="amenity-name">Wildlife Pond</div>
+        <div class="amenity-detail">Near the river<br/>A quiet retreat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ CALENDAR ════════ -->
+<section class="calendar" id="calendar">
+  <div class="section-inner">
+    <div class="calendar-header">
+      <div class="calendar-header-text reveal">
+        <span class="section-eyebrow">2026 Schedule</span>
+        <h2 class="section-title">Meetings &amp;<br/><em>community events</em>.</h2>
+        <p class="section-lede">Board meetings are held at the Community Center and broadcast via Zoom. All property owners are welcome.</p>
+      </div>
+      <div class="zoom-card reveal">
+        <div class="zoom-card-label">Join Any Meeting</div>
+        <a href="https://us02web.zoom.us/j/87032561742" class="zoom-card-link" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          Zoom · ID 870 3256 1742
+        </a>
+      </div>
+    </div>
+
+    <div class="events-list">
+      <div class="event">
+        <div class="event-date"><span class="month">May</span><span class="day">23</span></div>
+        <div class="event-body">
+          <div class="event-title">Pool Opening Day</div>
+          <div class="event-meta"><span>🕐 11:00 AM</span><span>📍 Aquatic Center</span></div>
+        </div>
+        <a href="#" class="event-action">Details →</a>
+      </div>
+      <div class="event">
+        <div class="event-date"><span class="month">May</span><span class="day">23</span></div>
+        <div class="event-body">
+          <div class="event-title">Adult Social</div>
+          <div class="event-meta"><span>🕐 7:30 PM</span><span>📍 Aquatic Center</span></div>
+        </div>
+        <a href="#" class="event-action">Details →</a>
+      </div>
+      <div class="event">
+        <div class="event-date"><span class="month">Jun</span><span class="day">13</span></div>
+        <div class="event-body">
+          <div class="event-title">Board Meeting</div>
+          <div class="event-meta"><span>🕐 9:00 AM</span><span>📍 Community Center + Zoom</span></div>
+        </div>
+        <a href="https://us02web.zoom.us/j/87032561742" class="event-action" target="_blank" rel="noopener">Join Zoom →</a>
+      </div>
+      <div class="event">
+        <div class="event-date"><span class="month">Aug</span><span class="day">8</span></div>
+        <div class="event-body">
+          <div class="event-title">Board Meeting</div>
+          <div class="event-meta"><span>🕐 9:00 AM</span><span>📍 Community Center</span></div>
+        </div>
+        <a href="#" class="event-action">Details →</a>
+      </div>
+      <div class="event">
+        <div class="event-date"><span class="month">Aug</span><span class="day">29</span></div>
+        <div class="event-body">
+          <div class="event-title">Community Picnic &amp; Annual Meeting</div>
+          <div class="event-meta"><span>🕐 11:00 AM</span><span>📍 Aquatic Center</span></div>
+        </div>
+        <a href="#" class="event-action">Details →</a>
+      </div>
+      <div class="event">
+        <div class="event-date"><span class="month">Sep</span><span class="day">7</span></div>
+        <div class="event-body">
+          <div class="event-title">Pool Closing Day</div>
+          <div class="event-meta"><span>🕐 7:00 PM</span><span>📍 Aquatic Center</span></div>
+        </div>
+        <a href="#" class="event-action">Details →</a>
+      </div>
+      <div class="event">
+        <div class="event-date"><span class="month">Oct</span><span class="day">10</span></div>
+        <div class="event-body">
+          <div class="event-title">Board Meeting</div>
+          <div class="event-meta"><span>🕐 9:00 AM</span><span>📍 Community Center</span></div>
+        </div>
+        <a href="#" class="event-action">Details →</a>
+      </div>
+      <div class="event">
+        <div class="event-date"><span class="month">Nov</span><span class="day">14</span></div>
+        <div class="event-body">
+          <div class="event-title">Board Meeting</div>
+          <div class="event-meta"><span>🕐 9:00 AM</span><span>📍 Community Center</span></div>
+        </div>
+        <a href="#" class="event-action">Details →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ QUICK ACCESS ════════ -->
+<section class="quick" id="documents">
+  <div class="section-inner">
+    <div class="amenities-header reveal">
+      <span class="section-eyebrow">Resident Resources</span>
+      <h2 class="section-title">Everything you'll need,<br/>in <em>one place</em>.</h2>
+      <p class="section-lede">All HOA documents, forms, and resources are currently hosted in our Google Drive while we transition platforms.</p>
+    </div>
+    <div class="quick-grid">
+      <a href="https://drive.google.com/" class="quick-card" target="_blank" rel="noopener">
+        <svg class="quick-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="9" y1="13" x2="15" y2="13"/>
+          <line x1="9" y1="17" x2="15" y2="17"/>
+        </svg>
+        <div class="quick-card-title">Documents &amp; Forms</div>
+        <div class="quick-card-desc">Bylaws, covenants, architectural request forms, pool pass applications, and meeting minutes.</div>
+        <span class="quick-card-link">Open Drive Folder →</span>
+      </a>
+      <a href="#" class="quick-card">
+        <svg class="quick-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+        </svg>
+        <div class="quick-card-title">Ask Sherwood</div>
+        <div class="quick-card-desc">Get answers about dues, pool passes, dock slips, architectural requests, amenities, and events.</div>
+        <span class="quick-card-link">Start a Conversation →</span>
+      </a>
+      <a href="#" class="quick-card">
+        <svg class="quick-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <div class="quick-card-title">Board Meetings</div>
+        <div class="quick-card-desc">Attend in person at the Community Center or join virtually via Zoom — all property owners welcome.</div>
+        <span class="quick-card-link">View Schedule →</span>
+      </a>
+      <a href="#" class="quick-card">
+        <svg class="quick-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <div class="quick-card-title">Contact the Board</div>
+        <div class="quick-card-desc">Get in touch with current board members for questions not answered in our resources.</div>
+        <span class="quick-card-link">See Roster →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ EMERGENCY STRIP ════════ -->
+<section class="emergency">
+  <div class="emergency-inner">
+    <div class="emergency-label">
+      <svg class="emergency-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+      <span class="emergency-label-text">In case of emergency</span>
+    </div>
+    <div class="emergency-contacts">
+      <div class="ec">
+        <span class="ec-name">Emergencies</span>
+        <a href="tel:911" class="ec-number">Dial 911</a>
+      </div>
+      <div class="ec">
+        <span class="ec-name">Sheriff (Non-Emergency)</span>
+        <a href="tel:8045805221" class="ec-number">804-580-5221</a>
+      </div>
+      <div class="ec">
+        <span class="ec-name">Fairfields VFD</span>
+        <a href="tel:8044534055" class="ec-number">804-453-4055</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">Sherwood Forest Shores</div>
+        <div class="footer-brand-tag">Where paradise awaits you.</div>
+        <div class="footer-address">
+          989 Lancelot Drive<br/>
+          Reedville, VA 22539
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <ul>
+          <li><a href="#community">About</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#calendar">Calendar</a></li>
+          <li><a href="#">Photo Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <ul>
+          <li><a href="https://drive.google.com/" target="_blank" rel="noopener">Documents &amp; Forms</a></li>
+          <li><a href="#">Architectural Requests</a></li>
+          <li><a href="#">Pool &amp; Dock Info</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Local Links</div>
+        <ul>
+          <li><a href="https://rfmuseum.org" target="_blank" rel="noopener">Reedville Fishermans Museum</a></li>
+          <li><a href="https://www.northernneck.org" target="_blank" rel="noopener">Northern Neck Tourism</a></li>
+          <li><a href="https://www.co.northumberland.va.us" target="_blank" rel="noopener">Northumberland County</a></li>
+          <li><a href="https://www.nnec.coop" target="_blank" rel="noopener">Northern Neck Electric</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sherwood Forest Shores Homeowners Association. All rights reserved.</span>
+      <span>Designed in the Northern Neck of Virginia</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav scroll state
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.nav');
+    if (window.scrollY > 100) {
+      nav.style.background = 'rgba(251, 248, 241, 0.95)';
+      nav.style.boxShadow = '0 1px 12px rgba(15, 38, 64, 0.06)';
+    } else {
+      nav.style.background = 'rgba(251, 248, 241, 0.85)';
+      nav.style.boxShadow = 'none';
+    }
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('#navLinks a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('mobile-open');
+    });
+  });
+</script>
+
+</body>
+</html>
