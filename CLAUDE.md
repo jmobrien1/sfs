@@ -77,3 +77,31 @@ vercel --prod --yes # manual prod deploy (rarely needed; GitHub integration auto
 ## Non-goals (do not build)
 
 Per `docs/BUILD_PLAN.md`: no resident login/portal, no online dues payment, no architectural request form (link to Drive PDF), no forum, no events RSVP, no resident photo upload, nothing that requires the board to moderate content.
+
+---
+
+## Build Log — Auto-Capture
+
+At the end of every significant build session (feature shipped, bug fixed, architecture decision made, infrastructure changed), write a structured entry to the Notion Build Log.
+
+**Notion Build Log database ID:** f6ff00ddec12498b8c2106290a65939e
+**Data source ID:** 82154dd1-1ff5-4b5e-b912-112e5e8ca7c0
+
+**How to log:** Use the Notion MCP tool `notion-create-pages` with parent `{"data_source_id": "82154dd1-1ff5-4b5e-b912-112e5e8ca7c0", "type": "data_source_id"}` and these properties:
+
+- **Session Title** (title): Brief description of what was done
+- **Date**: Today's date (YYYY-MM-DD)
+- **Project**: One of: PropelAI Frame, PropelAI Brief, PropelAI Ops, Civona, LocusMapsAI, BlueBook, Allegiance, Bushwood/Golf, DGX Infra, OpenClaw, Other
+- **Type**: Feature Build, Bug Fix, Refactor, Research, Infrastructure, GTM/Marketing, Design
+- **Tool**: Claude Code, Claude.ai, ChatGPT/Codex, Cursor, OpenClaw Agent, Manual
+- **Model Used**: Claude Opus, Claude Sonnet, GPT-5.4 Codex, qwen3.6:27b, Gemini, Local Other
+- **What Changed**: What was built, fixed, or modified (2-3 sentences)
+- **Decisions Made**: Key architectural or strategic decisions (numbered list)
+- **Files Modified**: Key files touched
+- **What's Next**: What should happen in the next session
+- **Blockers**: Anything blocking progress (or empty)
+- **Status**: Complete, In Progress, Blocked, Parked
+
+**When to log:** Don't log trivial sessions (quick questions, typo fixes). Log when something meaningful changed — a feature shipped, a decision was made, infrastructure was modified, or a blocker was identified.
+
+**Do not ask Mike if he wants to log.** Just do it at the end of any qualifying session.
